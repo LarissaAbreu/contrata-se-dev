@@ -1,0 +1,10 @@
+.DS_Store
+desktop.ini
+icon
+
+npm-debug.log
+node_modules/
+dist/
+
+yarn-error.log
+.out/

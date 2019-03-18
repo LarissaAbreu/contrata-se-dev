@@ -1,0 +1,37 @@
+{
+  "name": "contrata-se-dev",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LarissaAbreu/contrata-se-dev.git"
+  },
+  "author": "Larissa Abreu, Afonso Pacifer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LarissaAbreu/contrata-se-dev/issues"
+  },
+  "homepage": "https://github.com/LarissaAbreu/contrata-se-dev#readme",
+  "dependencies": {
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^2.1.0",
+    "style-loader": "^0.23.1",
+    "svg-react-loader": "^0.4.6",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
