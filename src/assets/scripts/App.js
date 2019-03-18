@@ -38,7 +38,6 @@ class App extends React.Component {
           <a href={issue.html_url} target="_blank">
             <h2>{issue.title}</h2>
             <ul>{$labels}</ul>
-            <p>{issue.body}</p>
             <span>{date}</span>
           </a>
         </div>
