@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import '../styles/style.css'
 
 class App extends React.Component {
   constructor() {
@@ -27,27 +28,29 @@ class App extends React.Component {
 
   render () {
     const $issues = this.state.issues.map((issue, i) => {
-      const date = this.formateDate(issue.created_at);
+      if (!issue.pull_request) {
+        const date = this.formateDate(issue.created_at);
 
-      const $labels = issue.labels.map((label, i) => {
-        return ( <li>{label.name}</li> )
-      });
+        const $labels = issue.labels.map((label, i) => {
+          return ( <li className="label">{label.name}</li> )
+        });
 
-      return (
-        <div>
-          <a href={issue.html_url} target="_blank">
-            <h2>{issue.title}</h2>
-            <ul>{$labels}</ul>
-            <span>{date}</span>
-          </a>
-        </div>
-      )
+        return (
+          <div className="card-vaga">
+            <a href={issue.html_url} target="_blank">
+              <h2 className="titulo">{issue.title}</h2>
+              <ul className="lista-labels">{$labels}</ul>
+              <span className="data">Publicada em: {date}</span>
+            </a>
+          </div>
+        )
+      }
     })
 
     return (
       <div>
-        <a href="https://github.com/frontendbr/vagas/issues/new" target="_blank">Postar uma nova vaga</a>
-        <div>{$issues}</div>
+        <a href="https://github.com/frontendbr/vagas/issues/new" target="_blank" className="nova-vaga">Postar uma nova vaga</a>
+        <div className="lista-vagas">{$issues}</div>
       </div>
     )
   }

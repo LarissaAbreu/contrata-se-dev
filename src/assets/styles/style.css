@@ -1,0 +1,71 @@
+﻿.nova-vaga {
+  box-sizing: border-box;
+  background-color: #4e7355;
+  color: #fff;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.nova-vaga:hover {
+  background-color: #4e7355d6;
+}
+
+.lista-vagas {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.card-vaga {
+  border: 1px dashed #4e7355;
+  box-sizing: border-box;
+  width: 350px;
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: #fbfffc;
+  border-radius: 5px;
+}
+
+.card-vaga a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.titulo {
+  color: #4e7355;
+  margin: 0;
+  font-size: 18px;
+}
+
+.lista-labels {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px 0;
+}
+
+.label {
+  color: #fff;
+  background-color: #374047;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.label:not(:last-child) {
+  margin-right: 3px;
+}
+
+.data {
+  color: #4e7355;
+}
