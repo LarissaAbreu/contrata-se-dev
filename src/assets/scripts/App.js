@@ -1,5 +1,6 @@
 ﻿import React from 'react';
-import '../styles/style.css'
+import '../styles/style.css';
+import tinyColor from 'tinycolor2';
 
 class App extends React.Component {
   constructor() {
@@ -26,13 +27,29 @@ class App extends React.Component {
     return `${ymd[2]}/${ymd[1]}/${ymd[0]}`;
   }
 
+  resolveColor(hex) {
+    const color = tinyColor(hex);
+    if (color.isLight()) {
+      return '000'
+    } else {
+      return 'fff'
+    };
+  };
+
   render () {
     const $issues = this.state.issues.map((issue, i) => {
       if (!issue.pull_request) {
         const date = this.formateDate(issue.created_at);
 
         const $labels = issue.labels.map((label, i) => {
-          return ( <li className="label">{label.name}</li> )
+          return (
+            <li
+              className="label"
+              style={{"--background-label": "#" + label.color, "--color-label": "#" + this.resolveColor(label.color)}}
+            >
+              {label.name}
+            </li>
+          )
         });
 
         return (
@@ -49,8 +66,17 @@ class App extends React.Component {
 
     return (
       <div>
-        <a href="https://github.com/frontendbr/vagas/issues/new" target="_blank" className="nova-vaga">Postar uma nova vaga</a>
-        <div className="lista-vagas">{$issues}</div>
+        <div className="topo">
+          <h1 className="topo__titulo">Contrata-se dev</h1>
+          <p className="topo__texto">Veja abaixo uma relação de empresas que estão precisando de devs... Boa sorte :D</p>
+          <a href="https://github.com/frontendbr/vagas/issues/new" target="_blank" className="nova-vaga">Postar uma nova vaga</a>
+        </div>
+        <div className="main">
+          <div className="lista-vagas">{$issues}</div>
+        </div>
+        <div className="rodape">
+          <span>Feito com</span><span className="rodape__heart"></span>
+        </div>
       </div>
     )
   }

@@ -19,7 +19,8 @@
   "homepage": "https://github.com/LarissaAbreu/contrata-se-dev#readme",
   "dependencies": {
     "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react-dom": "^16.8.1",
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
