@@ -5,21 +5,21 @@
 .topo {
   box-sizing: border-box;
   width: 100%;
-  min-height: 40vh;
-  background: linear-gradient(90deg, rgba(0,62,40,1) 0%, rgba(136,127,14,1) 50%, rgba(52,75,150,1) 100%);
+  background: rgb(24, 132, 132);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 32px;
+  padding: 64px;
 }
 
 .topo__titulo {
   color: #fff;
   font-size: 60px;
-  text-transform: uppercase;
   padding: 0;
   margin: 0;
+  font-family: 'Fugaz One', cursive;
+  letter-spacing: 5px;
 }
 
 @media (max-width: 600px) {
@@ -35,26 +35,37 @@
   max-width: 500px;
   box-sizing: border-box;
   text-align: center;
+  margin: 0;
+  padding: 32px 0;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+}
+
+.nova-vaga {
+  box-sizing: border-box;
+  background-color: #21e0a0;
+  color: #00333a;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: opacity .2s;
+  margin-right: 8px;
+}
+
+.nova-vaga:hover {
+  opacity: .8;
 }
 
 .main {
   box-sizing: border-box;
   padding: 32px;
-}
-
-.nova-vaga {
-  box-sizing: border-box;
-  background-color: #3c508b;
-  color: #fff;
-  padding: 15px;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 3px;
-}
-
-.nova-vaga:hover {
-  background-color: #b5d4b5;
-  color: #4e7355;
 }
 
 .lista-vagas {
@@ -72,7 +83,7 @@
   max-width: calc(100% / var(--cols) - 20px);
   margin: 0 10px;
   margin-bottom: 16px;
-  padding: 10px;
+  padding: 16px;
   background-color: #fbfffc;
   border-radius: 5px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
@@ -132,6 +143,24 @@
   color: #4e7355;
 }
 
+.mais {
+  box-sizing: border-box;
+  padding: 10px 16px;
+  color: #ffffff;
+  background-color: #3c8585;
+  margin: 0 auto;
+  display: block;
+  border-radius: 3px;
+  transition: opacity .2s;
+  box-shadow: none;
+  border: none;
+}
+
+.mais:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
 .rodape {
   box-sizing: border-box;
   width: 100%;
@@ -140,7 +169,7 @@
   align-items: center;
   justify-content: center;
   height: 50px;
-  background: linear-gradient(90deg, rgba(0,62,40,1) 0%, rgba(136,127,14,1) 50%, rgba(52,75,150,1) 100%);
+  background: rgb(24, 132, 132);
   color: #b5d4b5;
 }
 
