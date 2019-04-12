@@ -41,7 +41,8 @@ class App extends React.Component {
 
         const $labels = issue.labels.map((label, i) => {
           return (
-            <Label 
+            <Label
+              key={i}
               name={label.name}
               color={label.color}/>
           )
@@ -49,6 +50,7 @@ class App extends React.Component {
 
         return (
           <Card 
+            key={i}
             url={issue.html_url}
             title={issue.title}
             labels={$labels}

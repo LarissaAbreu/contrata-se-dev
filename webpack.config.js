@@ -27,7 +27,10 @@ module.exports = {
   },
   plugins: [
     new copyWebpackPlugin([
-      {from: './src/index.html', to: './'}
+      {from: './src/index.html', to: './'},
+      {from: './src/favicon.png', to: './'},
+      {from: './src/assets/icons/open-graph.png', to: './assets/icons/'},
+      {from: './CNAME', to: './'}
     ]),
     new webpack.HotModuleReplacementPlugin(),
   ],
