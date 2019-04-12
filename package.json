@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/webpack-dev-server"
+    "start": "./node_modules/.bin/webpack-dev-server",
+    "deploy": "gh-pages-deploy"
   },
   "repository": {
     "type": "git",
@@ -34,5 +35,9 @@
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "src",
+    "cname": "contrata-se.dev"
   }
 }
