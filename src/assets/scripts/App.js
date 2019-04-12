@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import '../styles/style.css';
-import tinyColor from 'tinycolor2';
+import Card from './components/Card';
+import Label from './components/Label';
 
 class App extends React.Component {
   constructor() {
@@ -8,32 +9,19 @@ class App extends React.Component {
     this.state = {
       issues: []
     };
-  }
+  };
 
   componentDidMount() {
     fetch('https://api.github.com/repos/frontendbr/vagas/issues?state=open')
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        this.setState({issues: json})
-      });
-  }
+      .then((res) => res.json())
+      .then((json) => this.setState({issues: json}));
+  };
 
   formateDate(date) {
     const dateSplit = date.split('T');
     const ymd = dateSplit[0].split('-');
 
     return `${ymd[2]}/${ymd[1]}/${ymd[0]}`;
-  }
-
-  resolveColor(hex) {
-    const color = tinyColor(hex);
-    if (color.isLight()) {
-      return '000'
-    } else {
-      return 'fff'
-    };
   };
 
   render () {
@@ -43,23 +31,18 @@ class App extends React.Component {
 
         const $labels = issue.labels.map((label, i) => {
           return (
-            <li
-              className="label"
-              style={{"--background-label": "#" + label.color, "--color-label": "#" + this.resolveColor(label.color)}}
-            >
-              {label.name}
-            </li>
+            <Label 
+              name={label.name}
+              color={label.color}/>
           )
         });
 
         return (
-          <div className="card-vaga">
-            <a href={issue.html_url} target="_blank">
-              <h2 className="titulo">{issue.title}</h2>
-              <ul className="lista-labels">{$labels}</ul>
-              <span className="data">Publicada em: {date}</span>
-            </a>
-          </div>
+          <Card 
+            url={issue.html_url}
+            title={issue.title}
+            labels={$labels}
+            date={date} />
         )
       }
     })
