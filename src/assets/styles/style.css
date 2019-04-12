@@ -66,6 +66,7 @@
 .main {
   box-sizing: border-box;
   padding: 32px;
+  background-color: #efefef;
 }
 
 .lista-vagas {
