@@ -66,7 +66,7 @@ class App extends React.Component {
           <p className="topo__texto">Agregador de vagas para pessoas desenvolvedoras :)</p>
           <div className="social">
             <a href="https://github.com/frontendbr/vagas/issues/new" target="_blank" className="nova-vaga">Postar uma nova vaga</a>
-            <iframe src="https://ghbtns.com/github-btn.html?user=LarissaAbreu&repo=contrata-se-dev&type=star&size=large" frameborder="0" scrolling="0" width="75.43px" height="30px"></iframe>
+            <iframe title="Star on github" src="https://ghbtns.com/github-btn.html?user=LarissaAbreu&repo=contrata-se-dev&type=star&size=large" frameborder="0" scrolling="0" width="75.43px" height="30px"></iframe>
           </div>
         </div>
         <div className="main">
