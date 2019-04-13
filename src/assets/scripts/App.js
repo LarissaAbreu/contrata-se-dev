@@ -2,20 +2,24 @@
 import '../styles/style.css';
 import Card from './components/Card';
 import Label from './components/Label';
+import SearchInput from './components/SearchInput';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       issues: [],
+      filteredIssues: [],
       pages: 1
     };
+
+    this._filterIssuesData = this._filterIssuesData.bind(this);
   };
 
   componentDidMount() {
     fetch('https://api.github.com/repos/frontendbr/vagas/issues?state=open&page=1')
       .then((res) => res.json())
-      .then((json) => this.setState({issues: json}));
+      .then((json) => this.setState({ issues: json, filteredIssues: json }));
   };
 
   formateDate(date) {
@@ -30,12 +34,27 @@ class App extends React.Component {
       .then((res) => res.json())
       .then((json) => {
         const issues = [...this.state.issues, ...json];
-        this.setState({issues: issues, pages: this.state.pages + 1})
+        this.setState({
+          issues: issues,
+          filteredIssues: issues,
+          pages: this.state.pages + 1
+        })
       })
   }
 
-  render () {
-    const $issues = this.state.issues.map((issue, i) => {
+  _filterIssuesData({ target: { value } }) {
+    const filteredIssues = [...this.state.issues].filter(issue => {
+      let labels = issue.labels.map(label => label.name);
+      labels = labels.filter(label => label.toLowerCase().indexOf(value.toLowerCase()) > -1);
+
+      return issue.title.toLowerCase().indexOf(value.toLowerCase()) > -1 || labels.length > 0
+    });
+
+    this.setState({ filteredIssues });
+  }
+
+  render() {
+    const $issues = this.state.filteredIssues.map((issue, i) => {
       if (!issue.pull_request) {
         const date = this.formateDate(issue.created_at);
 
@@ -44,17 +63,18 @@ class App extends React.Component {
             <Label
               key={i}
               name={label.name}
-              color={label.color}/>
+              color={label.color} />
           )
         });
 
         return (
-          <Card 
+          <Card
             key={i}
             url={issue.html_url}
             title={issue.title}
             labels={$labels}
-            date={date} />
+            date={date}
+            fullWidth={this.state.filteredIssues.length <= 2} />
         )
       }
     })
@@ -70,6 +90,7 @@ class App extends React.Component {
           </div>
         </div>
         <div className="main">
+          <SearchInput placeholder='Pesquise por titulos, labels e etc...' onChange={this._filterIssuesData} />
           <div className="lista-vagas">{$issues}</div>
           <button className="mais" onClick={() => this._showMore()}>Mostrar mais</button>
         </div>

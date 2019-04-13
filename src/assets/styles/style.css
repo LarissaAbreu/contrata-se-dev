@@ -64,9 +64,13 @@
 }
 
 .main {
-  box-sizing: border-box;
   padding: 32px;
+  box-sizing: border-box;
   background-color: #efefef;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .lista-vagas {
@@ -204,6 +208,16 @@
   position: absolute;
   top: 50%;
   width: 10px;
+}
+
+.search-input {
+  border: 0;
+  width: 90%;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+              0 1px 5px 0 rgba(0, 0, 0, 0.12),
+              0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes pulse {
