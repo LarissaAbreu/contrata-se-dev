@@ -10,4 +10,7 @@
 
 Depois que seu pull request for mergeado você pode deletar sua branch.
 
+## Atenção:
+É importante tentar manter o padrão de desenvolvimento que está sendo seguido no projeto e sempre tentar fazer o seu código de uma maneira que seja escalável e manutenível.
+
 ### [<-- Voltar](https://github.com/LarissaAbreu/contrata-se-dev)
