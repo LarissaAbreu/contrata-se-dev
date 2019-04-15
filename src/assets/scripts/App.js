@@ -2,6 +2,7 @@
 import '../styles/style.css';
 import Card from './components/Card';
 import Label from './components/Label';
+import { getFrontEndBR } from './services/api';
 
 class App extends React.Component {
   constructor() {
@@ -13,9 +14,8 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    fetch('https://api.github.com/repos/frontendbr/vagas/issues?state=open&page=1')
-      .then((res) => res.json())
-      .then((json) => this.setState({issues: json}));
+    getFrontEndBR('vagas/issues?state=open&page=1')
+      .then(data => this.setState({ issues: data }));
   };
 
   formateDate(date) {
@@ -26,12 +26,14 @@ class App extends React.Component {
   };
 
   _showMore() {
-    fetch(`https://api.github.com/repos/frontendbr/vagas/issues?state=open&page=${this.state.pages + 1}`)
-      .then((res) => res.json())
-      .then((json) => {
-        const issues = [...this.state.issues, ...json];
-        this.setState({issues: issues, pages: this.state.pages + 1})
-      })
+    const { pages } = this.state;
+    getFrontEndBR(`vagas/issues?state=open&page=${pages + 1}`)
+      .then(data => {
+        this.setState(prevState => ({
+          issues: [...prevState.issues, ...data],
+          pages: pages + 1,
+        }));
+      });
   }
 
   render () {
