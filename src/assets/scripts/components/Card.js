@@ -1,15 +1,27 @@
-﻿import React from 'react';
+﻿import React from "react";
+import PropTypes from "prop-types";
 
-const Card = ({url, title, labels, date}) => {
+import ListLabel from "./ListLabel.js";
+import TitleCard from "./TitleCard.js";
+import DateCard from "./DateCard.js";
+
+const Card = ({ url, title, labels, date }) => {
   return (
-    <div className="card-vaga">
+    <li className="list-card__card">
       <a href={url} target="_blank">
-        <h2 className="titulo">{title}</h2>
-        <ul className="lista-labels">{labels}</ul>
-        <span className="data">Publicada em: {date}</span>
+        <TitleCard text={title} />
+        <ListLabel labels={labels} />
+        <DateCard text={date} />
       </a>
-    </div>
-  )
-}
+    </li>
+  );
+};
+
+Card.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  labels: PropTypes.array.isRequired,
+  date: PropTypes.string.isRequired
+};
 
 export default Card;
