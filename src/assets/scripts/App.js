@@ -42,15 +42,20 @@ class App extends React.Component {
       })
   }
 
-  _filterIssuesData({ target: { value } }) {
-    const filteredIssues = [...this.state.issues].filter(issue => {
-      let labels = issue.labels.map(label => label.name);
-      labels = labels.filter(label => label.toLowerCase().indexOf(value.toLowerCase()) > -1);
+  _filterIssuesData(value) {
+    fetch('https://api.github.com/repos/frontendbr/vagas/issues?state=open')
+      .then(res => res.json())
+      .then(issues => {
+        const filteredIssues = issues.filter(issue => {
+          let labels = issue.labels.map(label => label.name);
+          labels = labels.filter(label => label.toLowerCase().indexOf(value.toLowerCase()) > -1);
 
-      return issue.title.toLowerCase().indexOf(value.toLowerCase()) > -1 || labels.length > 0
-    });
+          return issue.title.toLowerCase().indexOf(value.toLowerCase()) > -1 || labels.length > 0
+        });
 
-    this.setState({ filteredIssues });
+        this.setState({ filteredIssues });
+      })
+
   }
 
   render() {
@@ -90,7 +95,7 @@ class App extends React.Component {
           </div>
         </div>
         <div className="main">
-          <SearchInput placeholder='Pesquise por titulos, labels e etc...' onChange={this._filterIssuesData} />
+          <SearchInput placeholder='Pesquise por titulos, labels e etc...' onChange={({ target: { value } }) => this._filterIssuesData(value)} />
           <div className="lista-vagas">{$issues}</div>
           <button className="mais" onClick={() => this._showMore()}>Mostrar mais</button>
         </div>
