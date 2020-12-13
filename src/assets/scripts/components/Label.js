@@ -16,7 +16,7 @@ const Label = ({color, name}) => {
     >
       {name}
     </li>
-  )
-}
+  );
+};
 
 export default Label;
